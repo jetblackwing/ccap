@@ -1,6 +1,16 @@
 # Wazuh Manager Installation Automation
 
-This C++ program automates the installation of Wazuh Manager on an Ubuntu server. It starts by updating and upgrading the system, then proceeds with adding the Wazuh repository, installing the necessary dependencies, and setting up the Wazuh Manager service.
+This repository contains C++ programs for automating the installation of security tools on Ubuntu servers.
+
+## Programs
+
+### 1. Wazuh Manager Installer (`install_wazuh.cpp`)
+
+Automates the installation of Wazuh Manager on an Ubuntu server. It starts by updating and upgrading the system, then proceeds with adding the Wazuh repository, installing dependencies, and setting up the Wazuh Manager service.
+
+### 2. Security Tools Installer (`install_security_tools.cpp`)
+
+Automates the installation of multiple security tools on Ubuntu servers: Suricata, Falco, ClamAV, and Wazuh Agent. Starts with system update and upgrade.
 
 ## Prerequisites
 
@@ -9,9 +19,9 @@ This C++ program automates the installation of Wazuh Manager on an Ubuntu server
 - Internet connection for downloading packages
 - C++ compiler (g++) installed on the server
 
-## Installation
+## Installation and Usage
 
-1. Transfer the `install_wazuh.cpp` file to your Ubuntu server.
+1. Transfer the desired `.cpp` file to your Ubuntu server.
 2. If not already installed, install g++:
    ```
    sudo apt update
@@ -19,34 +29,36 @@ This C++ program automates the installation of Wazuh Manager on an Ubuntu server
    ```
 3. Compile the program:
    ```
-   g++ install_wazuh.cpp -o install_wazuh
+   g++ <filename>.cpp -o <executable_name>
+   ```
+4. Run the program with sudo privileges:
+   ```
+   sudo ./<executable_name>
    ```
 
-## Usage
+### For Wazuh Manager Installer:
+- File: `install_wazuh.cpp`
+- Executable: `install_wazuh`
 
-Run the compiled program with sudo privileges:
-```
-sudo ./install_wazuh
-```
+### For Security Tools Installer:
+- File: `install_security_tools.cpp`
+- Executable: `install_security_tools`
 
-The program will execute the following steps:
-- Update package list
-- Upgrade the system
-- Install dependencies (curl, gnupg, apt-transport-https)
-- Add Wazuh GPG key
-- Add Wazuh repository
-- Update package list again
-- Install Wazuh Manager
-- Enable and start the Wazuh Manager service
+## Installed Tools
 
-Output will be displayed for each step. If any step fails, the program will exit with an error.
+### Security Tools Installer installs:
+- **Suricata**: Network IDS/IPS
+- **Falco**: Runtime security monitoring
+- **ClamAV**: Antivirus engine
+- **Wazuh Agent**: Security monitoring agent (requires configuration to connect to Wazuh Manager)
 
 ## Notes
 
-- This program installs only the Wazuh Manager component. For a complete Wazuh setup, you may need to install additional components like the Wazuh Indexer and Dashboard.
-- Ensure your system meets the hardware and software requirements for Wazuh as outlined in the official documentation.
-- The program uses the latest stable 4.x version of Wazuh packages.
+- Ensure your system meets the hardware and software requirements for the installed tools.
+- Wazuh Agent installation requires additional configuration to connect to a Wazuh Manager.
+- The programs use the latest stable versions available in the repositories.
+- All installations are performed with non-interactive flags where possible.
 
 ## License
 
-This project is provided as-is for educational and automation purposes. Refer to Wazuh's licensing for the installed software.
+This project is provided as-is for educational and automation purposes. Refer to the respective tool's licensing for the installed software.
