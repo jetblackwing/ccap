@@ -21,6 +21,28 @@ Automates the installation of multiple security tools on Ubuntu servers: Suricat
 
 ## Installation and Usage
 
+### Using Makefile (Recommended)
+1. Ensure `make` is installed on your system.
+2. Run `make` to compile all programs:
+   ```
+   make
+   ```
+3. Or compile specific programs:
+   ```
+   make install_wazuh
+   make install_security_tools
+   ```
+4. Run the programs with sudo privileges:
+   ```
+   sudo ./install_wazuh
+   sudo ./install_security_tools
+   ```
+5. To clean up compiled files:
+   ```
+   make clean
+   ```
+
+### Manual Compilation
 1. Transfer the desired `.cpp` file to your Ubuntu server.
 2. If not already installed, install g++:
    ```
