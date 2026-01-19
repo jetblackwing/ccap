@@ -30,6 +30,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <syslog.h>
 
 int main() {
     std::cout << "Starting Security Tools Installation Automation..." << std::endl;
@@ -167,4 +168,14 @@ int main() {
     std::cout << "Security tools installation completed successfully!" << std::endl;
     std::cout << "Note: Wazuh Agent requires configuration to connect to the Wazuh Manager." << std::endl;
     return 0;
+
+    // Adding logging feature.
+    // Event logging can be implemented using syslog or a dedicated logging library.
+    // Every events and activities which are performed by this script can be logged for auditing and troubleshooting purposes.
+    // Log file is created at ./ccap_agent_log.txt
+    openlog("CCAP_Agent_Installation", LOG_PID|LOG_CONS, LOG_USER);
+    syslog(LOG_INFO, "Security tools installation started.");
+    // Log each step of the installation process here...
+    syslog(LOG_INFO, "Security tools installation completed successfully.");
+    closelog();
 }
